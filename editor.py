@@ -209,7 +209,6 @@ for n in range({}):
         self.editor_cut_paste_m6 = self.editor_cut_paste_m6.format(N)
         self.editor_cut_paste_m7 = self.editor_cut_paste_m7.format(N)
         self.editor_cut_paste_m8 = self.editor_cut_paste_m8.format(N)
-
         self.editor_copy_paste = self.editor_copy_paste.format(N)
         self.editor_copy_paste_best = self.editor_copy_paste_best.format(N)
         self.editor_get_text = self.editor_get_text.format(N)
