@@ -1,8 +1,8 @@
 # Research on Cut/Copy/Paste TextEditor
 
-## a. How to run the program (especially important if you used external dependencies).
+## a. How to run the program.
 
-1. Install External Libraries: \
+1. Install External Library: \
 External library used: pyperclip \
 Installing pyperclip:
     ```
