@@ -16,7 +16,7 @@ Installing pyperclip:
     
 *Note: sometimes, it may take about 10s for tedious some methods used in the program, such as pyperclip*
 
-=========================================================================================================
+===========================================================================
 ## b. My high level approach to the problem.
 
 ### Basic Ideas:
@@ -77,7 +77,7 @@ For Paste operations (Python String Concatenation), I need to rank some methods 
     format() method is a positional format method to concatenate elements including strings, characters, integers, etc. together.
 
 
-=========================================================================================================
+===========================================================================
 ## c. Experiments & Results:
 
 Since the cut operation includes *1). extract according text; 2). deleted this text; 3). paste and insert it back* and the copy operation includes *1). extract according text; 2). paste and insert it back*, then we can do experients only on the cut-paste operation to test different motheds mentioned above.
@@ -151,10 +151,10 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     According to the Figure 7, the *16,384 (2^15)*  repeated copy-paste operations can only take about **0.0082** seconds. Approximately, this method improves the cut-paste performance by around *20.8%* compared to the original copy-paste method (takes around 0.00997 in average).
 
 
-====================================================================================================================
+===========================================================================
 ## d. Any extensions you have added or would like to add if you had more time.
 
-    For this project, I have tried to use as many ways of cut/copy operation and paste operation as possible to cover all the methods to find the best combination of cut/copy operation and paste operation according to their performances. I have added "pyperclip" library to the project while implementing cut/copy operation because this library can support clipboard operations on Windows/MacOs/Linux. 
+For this project, I have tried to use as many ways of cut/copy operation and paste operation as possible to cover all the methods to find the best combination of cut/copy operation and paste operation according to their performances. I have added "pyperclip" library to the project while implementing cut/copy operation because this library can support clipboard operations on Windows/MacOs/Linux. 
     
-    The project could be easier to operate if a well-designed GUI is added to it. Additionlly, there are other reasons can affect the final performance, such as to-be-pasted text's length and so on. Due to the limited time, I did not get to do experiements on the impact that to-be-pasted text's length could have on the performance. 
+The project could be easier to operate if a well-designed GUI is added to it. Additionlly, there are other reasons can affect the final performance, such as to-be-pasted text's length and so on. Due to the limited time, I did not get to do experiements on the impact that to-be-pasted text's length could have on the performance. 
 
