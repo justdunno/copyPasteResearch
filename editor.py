@@ -203,7 +203,7 @@ for n in range({}):
         self.editor_cut_paste = self.editor_cut_paste.format(N)
         self.editor_cut_paste_m1 = self.editor_cut_paste_m1.format(N)
         self.editor_cut_paste_m2 = self.editor_cut_paste_m2.format(N)
-        self.editor_cut_paste_m3 = self.editor_cut_paste_m3.format(N)
+        self.editor_cut_paste_m3 = self.editor_cut_paste_m3.format(N) #takes the most time
         self.editor_cut_paste_m4 = self.editor_cut_paste_m4.format(N)
         self.editor_cut_paste_m5 = self.editor_cut_paste_m5.format(N)
         self.editor_cut_paste_m6 = self.editor_cut_paste_m6.format(N)
@@ -272,7 +272,7 @@ for n in range({}):
             
 
 if __name__ == "__main__":
-    for i in range(15): # num of operations loop thru 
+    for i in range(15): # num of operations loop thru 2^1 to 2^14
         b = EditorBenchmarker(["hello friends"], 2**i)
         timeslist.append(2**i)
         b.benchmark()
@@ -343,7 +343,7 @@ if __name__ == "__main__":
     #Figure 6: show best cut-paste performance: assignment '=' & str.join()
     plt.figure(figsize=(16, 4))
     plt.title("Figure 6: Show Best Cut-Paste Performance (using assignment '=' & str.join())")
-    plt.plot(timeslist, pasteList_join,'s-', color = 'r', label = "'+'") #red
+    plt.plot(timeslist, pasteList_join,'s-', color = 'r') #red
     plt.xlabel('Amount of Repeated Cut & Paste Operations')
     plt.ylabel('Time Spent (second)')    
     for a, b in zip(timeslist, pasteList_join):
@@ -354,10 +354,14 @@ if __name__ == "__main__":
     #Figure 7: show best copy-paste performance: assignment '=' & str.join()
     plt.figure(figsize=(16, 4))
     plt.title("Figure 7: Show Best Copy-Paste Performance (using assignment '=' & str.join())")
-    plt.plot(timeslist, bestCopyList,'s-', color = 'r', label = "'+'") #red
+    plt.plot(timeslist, bestCopyList,'s-', color = 'r') #red
     plt.xlabel('Amount of Repeated Copy & Paste Operations')
     plt.ylabel('Time Spent (second)')    
     for a, b in zip(timeslist, bestCopyList):
         plt.text(a, b, b, ha='center', va='bottom', fontsize=5)
     plt.legend(loc = "best")
     plt.show()
+
+    # print("when we got the best combination, do some testing: ") # [m3] & [m6] should be commented out for this test
+    # b = EditorBenchmarker(["hello friends"], 100000)
+    # b.benchmark()

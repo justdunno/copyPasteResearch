@@ -101,7 +101,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 1: 
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_1.png) 
 
-    According to the Figure 1 above, the pyperclip method clearly cost the much more time than other methods because it access the computer's clipboard each time for putting text into it and retrieving text from it. Additionally, if we use pyperclip method for too many times, it would prevent users from using clipboard features correctly for doing other things since the clipboard is constantly occupied by this cut/paste method. 
+    According to the Figure 1 above, the pyperclip method clearly cost the much more time than other methods because it access the computer's clipboard each time for putting text into it and retrieving text from it. Additionally, if we use pyperclip method for too many times, it would prevent users from using clipboard features correctly for doing other things since the clipboard is constantly occupied by this cut/paste method. However, if we only need to do a small amount (1-10) of repeated cut-paste or copy-paste operations, using clipboard (pyperclip method) can be faster than using other methods.
 
     Figure 2:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_2.png) 
@@ -111,7 +111,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 3: 
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_3.png)
 
-    According to the Figure 3 above, when there are only Assignment '=', copy.copy(), copy.deepcopy() methods left, we can clearly see that generally, when the repeat time goes up, Assignment method has the best performance among them all.
+    According to the Figure 3 above, when there are only Assignment '=', copy.copy(), copy.deepcopy() methods left, we can clearly see that generally, when the repeat time goes up, Assignment method has the best performance among them all. Note: Sometimes, copy.copy() can get better performance than using Assignment; it may because both of them are shallow copy method. The difference usually would not be larger than 0.001s when the repeated time is 16,384. 
 
 
 ****
@@ -135,7 +135,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 5:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_5.png) 
 
-    According to the Figure 5 above, the paste method str.join() has the best performance among all the paste (string concatenation) methods.
+    According to the Figure 5 above, the paste method str.join() has the best performance among all the paste (string concatenation) methods. Note: sometimes, '+' operator can defeat str.join()'s performance. However, the time spent difference between str.join() and '+' method would not get larger than 0.0001s.
 
 ****
 - To sum up, the cut/copy method *assignment '='* and the paste method *str.join()* have the best performance. So I tried to get the time spent data of this best combination:
@@ -143,13 +143,16 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 6:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_6.png) 
 
-    According to the Figure 6, the *16,384 (2^15)* repeated cut-paste operations can only take about **0.0064** seconds. Approximately, this method improves the cut-paste performance by around *7.2%* compared to the original cut-paste method (takes average 0.0069 in average)
+    According to the Figure 6, the *16,384 (2^15)* repeated cut-paste operations can only take about **0.0064** seconds. Approximately, this method improves the cut-paste performance by around *7.2%* compared to the original cut-paste method (takes average 0.0069 in average). 
+
+    When I commented out the pyperclip method and tried to run more times. I got about 0.05 seconds run-time for 100,000 repeated cut-pated operations using assignment '=' and str.join().
 
     Figure 7:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_7.png) 
 
-    According to the Figure 7, the *16,384 (2^15)*  repeated copy-paste operations can only take about **0.0082** seconds. Approximately, this method improves the cut-paste performance by around *20.8%* compared to the original copy-paste method (takes around 0.00997 in average).
+    According to the Figure 7, the *16,384 (2^15)*  repeated copy-paste operations can only take about **0.0082** seconds. Approximately, this method improves the cut-paste performance by around *20.8%* compared to the original copy-paste method (takes around 0.00997 in average). 
 
+    When I commented out the pyperclip method and tried to run more times. I got about 0.13 seconds run-time for 100,000 repeated cut-pated operations using assignment '=' and str.join().
 
 ===========================================================================
 ## d. Any extensions you have added or would like to add if you had more time.
