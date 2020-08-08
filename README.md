@@ -21,19 +21,19 @@ Installing pyperclip:
 
 ### Basic Ideas:
 
-For the original copy/cut/paste methods in the given code, we can see that all the operations are based on multipulating the strings:
+For the original copy/cut/paste methods in the given code, we can see that all the operations are based on manipulating the strings:
 
 *Cut & Paste*: **save and remove** a part of string using *self.document[i:j]* to get string's ith character to jth character (jth is not included); put the saved substring into a string using *+* operation such as *self.document[:i] + self.paste_text + self.document[i:]*
 
 *Copy & Paste*: **save** a part of string using *self.document[i:j]* to get string's ith character to jth character (jth is not included);
 put the saved substring into a string using *+* operation such as *self.document[:i] + self.paste_text + self.document[i:]*
 
-According to the code and the defination, there are two steps of the cut-paste/copy-paste operation; thus, the trial of speeding up the cut/copy/paste operations can focus on both speeding up **copy/cut operations** and **paste operations (Python String Concatenation)**. 
+According to the code and the definition, there are two steps of the cut-paste/copy-paste operation; thus, the trial of speeding up the cut/copy/paste operations can focus on both speeding up **copy/cut operations** and **paste operations (Python String Concatenation)**. 
 
 ****
 For Cut/Copy operations, I need to rank some methods by its performance. Methods include: \
 - **1). Use Assignment Operator '=' to get to-be-paste text (original code: )** \
-    By using assignment operator, the memory address (pointer) get assigned to the new varible and get saved by it. 
+    By using assignment operator, the memory address (pointer) get assigned to the new variable and get saved by it. 
     It is a way of shallow copy.
     ```
     For example, if *a = [1, 2, 3]* and then we do *b = a*, b and a would both point to the same memory address.
@@ -47,7 +47,7 @@ For Cut/Copy operations, I need to rank some methods by its performance. Methods
     ```
 
 - **3). Use copy.deepcopy() for deep copy** \
-    Deep copy method make sure the old contents are inserted into the new varible while the new varible being constructed. 
+    Deep copy method make sure the old contents are inserted into the new variable while the new variable is being constructed. 
     ```
     For example, if a is a compound object *a = [1, 2, 3]* and then we do *b = copy.deepcopy(a)*, object b and object a would refer to the different addresses.
     When we alter *"a"* to be *"a.append(4)"*, then we would have *"a = [1, 2, 3, 4]"* and still *"b = [1, 2, 3]"*.
@@ -57,21 +57,21 @@ For Cut/Copy operations, I need to rank some methods by its performance. Methods
     To-be-pasted content is store on the computer' clipboard using *pyperclip.copy()*, and would be retrieved while doing paste operation using *pyperclip.paste()*. 
 
 - **5). Use string formatting for shallow copy** \
-    It is also a way of shallow copy. The systax would be *b = '%s' % a[i:j]*
+    It is also a way of shallow copy. The syntax would be *b = '%s' % a[i:j]*
 
  
 For Paste operations (Python String Concatenation), I need to rank some methods by its performance as well. Methods include:
 - **1). Use '+' for string concatenation** \
-    Using '+' operator is what the original code does. All the elements to be concatenated using '+' must be strings.
+    Using the '+' operator is what the original code does. All the elements to be concatenated using '+' must be strings.
 
 - **2). Use '%' for string concatenation** \
-    Using '%' operator is also an straightforward way for string concatenation, and it can also help with formatting.  
+    Using the '%' operator is also a straightforward way for string concatenation, and it can also help with formatting.  
 
 - **3). Use f-string for string concatenation** \
-    f-string is a python 3 improvement method on %-formatting, it makes the syntax of string-concatenation code more readible.
+    f-string is a python 3 improvement method on %-formatting, it makes the syntax of string-concatenation code more readable.
 
 - **4). Use str.join() method for string concatenation** \
-    join() method accepts list paremeter, and can combine string elements in the list together.
+    join() method accepts list parameter, and can combine string elements in the list together.
 
 - **5). Use str.format() method for string concatenation** \
     format() method is a positional format method to concatenate elements including strings, characters, integers, etc. together.
@@ -80,7 +80,7 @@ For Paste operations (Python String Concatenation), I need to rank some methods 
 ===========================================================================
 ## c. Experiments & Results:
 
-Since the cut operation includes *1). extract according text; 2). deleted this text; 3). paste and insert it back* and the copy operation includes *1). extract according text; 2). paste and insert it back*, then we can do experients only on the cut-paste operation to test different motheds mentioned above.
+Since the cut operation includes *1). extract the according text; 2). deleted this text; 3). paste and insert it back* and the copy operation includes *1). extract the according text; 2). paste and insert it back*, then we can do experiments only on the cut-paste operation to test different methods mentioned above.
 
 The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, ..., 2^14 = 16384. Line charts would be created using *matplotlib.pyplot* to show the performances of different methods' combination. 
 
@@ -101,7 +101,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 1: 
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_1.png) 
 
-    According to the Figure 1 above, the pyperclip method clearly cost the much more time than other methods because it access the computer's clipboard each time for putting text into it and retrieving text from it. Addtionally, if we use pyperclip method for too many times, it would prevent users from using clipboard features correctly for doing other things since the clipboard is constantly occupied by this cut/paste method. 
+    According to the Figure 1 above, the pyperclip method clearly cost the much more time than other methods because it access the computer's clipboard each time for putting text into it and retrieving text from it. Additionally, if we use pyperclip method for too many times, it would prevent users from using clipboard features correctly for doing other things since the clipboard is constantly occupied by this cut/paste method. 
 
     Figure 2:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_2.png) 
@@ -117,7 +117,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
 ****
 - To compare different paste methods, below is what we need to compare together (we use ):
 
-    **Method 0 (the orginal method)**: Use *assignment '='* for cut operation and *'+'* for string concatenation
+    **Method 0 (the original method)**: Use *assignment '='* for cut operation and *'+'* for string concatenation
 
     **Method 5**: Use *assignment '='* and *'%'* for string concatenation
 
@@ -130,7 +130,7 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
     Figure 4: 
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_4.png) 
 
-    According to the Figure 4 above, f-string method has clearly much worse performace compared to others, so we can remove this line to see the line chart more clearly.
+    According to the Figure 4 above, f-string method has clearly much worse performance compared to others, so we can remove this line to see the line chart more clearly.
 
     Figure 5:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_5.png) 
@@ -156,5 +156,5 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
 
 For this project, I have tried to use as many ways of cut/copy operation and paste operation as possible to cover all the methods to find the best combination of cut/copy operation and paste operation according to their performances. I have added "pyperclip" library to the project while implementing cut/copy operation because this library can support clipboard operations on Windows/MacOs/Linux. 
     
-The project could be easier to operate if a well-designed GUI is added to it. Additionlly, there are other reasons can affect the final performance, such as to-be-pasted text's length and so on. Due to the limited time, I did not get to do experiements on the impact that to-be-pasted text's length could have on the performance. 
+The project could be easier to operate if a well-designed GUI is added to it. Additionally, there are other reasons can affect the final performance, such as to-be-pasted text's length and so on. Due to the limited time, I did not get to do experiments on the impact that to-be-pasted text's length could have on the performance. 
 
