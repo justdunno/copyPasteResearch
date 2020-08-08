@@ -145,14 +145,14 @@ The number of repeated operations is looped through 2^0 = 1, 2^1 = 2, 2^2 = 4, .
 
     According to the Figure 6, the *16,384 (2^15)* repeated cut-paste operations can only take about **0.0064** seconds. Approximately, this method improves the cut-paste performance by around *7.2%* compared to the original cut-paste method (takes average 0.0069 in average). 
 
-    When I commented out the pyperclip method and tried to run more times. I got about 0.05 seconds run-time for 100,000 repeated cut-pated operations using assignment '=' and str.join().
+    When I commented out the pyperclip method and tried to run more times. I got about **0.05** seconds run-time for **100,000** repeated cut-pated operations using assignment '=' and str.join().
 
     Figure 7:
     ![image](https://github.com/justdunno/PicsForMyReadmes/blob/master/Figure_7.png) 
 
     According to the Figure 7, the *16,384 (2^15)*  repeated copy-paste operations can only take about **0.0082** seconds. Approximately, this method improves the cut-paste performance by around *20.8%* compared to the original copy-paste method (takes around 0.00997 in average). 
 
-    When I commented out the pyperclip method and tried to run more times. I got about 0.13 seconds run-time for 100,000 repeated cut-pated operations using assignment '=' and str.join().
+    When I commented out the pyperclip method and tried to run more times. I got about **0.13** seconds run-time for **100,000** repeated cut-pated operations using assignment '=' and str.join().
 
 ===========================================================================
 ## d. Any extensions you have added or would like to add if you had more time.
